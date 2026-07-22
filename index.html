@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chá de Panela</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #9cb071;
+            --text-color: #ffffff;
+            --accent-color: #c48b5d;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+            font-family: 'Quicksand', sans-serif;
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* --- DECORAÇÕES --- */
+        .flower {
+            position: absolute;
+            width: 250px;
+            opacity: 0.9;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .flower.top-left { top: -20px; left: -20px; transform: rotate(15deg); }
+        .flower.top-right { top: -20px; right: -20px; transform: scaleX(-1) rotate(15deg); }
+        .sparkle { position: absolute; width: 30px; animation: pulse 2s infinite alternate; pointer-events: none; }
+        @keyframes pulse { 0% { transform: scale(0.8); opacity: 0.5; } 100% { transform: scale(1.2); opacity: 1; } }
+
+        /* --- CONTEÚDO --- */
+        .container {
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        h1 {
+            font-family: 'Amatic SC', cursive;
+            font-size: 5rem;
+            line-height: 0.9;
+            margin: 20px 0 30px 0;
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+        .graphic-area {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        .house-svg { width: 220px; opacity: 0.9; }
+        .button-group {
+            position: absolute;
+            top: 180%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 80%;
+            max-width: 260px;
+        }
+        .btn {
+            background-color: #ffffff;
+            color: var(--bg-color);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+        }
+        .date-badge {
+            background-color: var(--accent-color);
+            padding: 8px 30px;
+            font-family: 'Amatic SC', cursive;
+            font-size: 2.2rem;
+            transform: rotate(-2deg);
+            box-shadow: 2px 3px 5px rgba(0,0,0,0.15);
+            margin-top: 15px;
+            border-radius: 3px;
+            position: relative;
+            z-index: 2;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .address {
+            margin-top: 25px;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 0 10px;
+        }
+
+        /* --- RESPONSIVIDADE (CELULAR) --- */
+        @media (max-width: 600px) {
+            .flower { width: 150px; } /* Flores menores */
+            h1 { font-size: 3.5rem; margin-top: 40px; } /* Fonte ajustada */
+            .house-svg { width: 190px; }
+            .btn { padding: 10px 15px; font-size: 0.9rem; }
+            .date-badge { font-size: 1.8rem; padding: 6px 20px; }
+            .address { font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Flores -->
+    <svg class="flower top-left" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path d="M-20 -20 Q100 50 160 180" stroke="#87995e" stroke-width="2" fill="none"/>
+        <path d="M20 10 Q120 40 100 150" stroke="#87995e" stroke-width="2" fill="none"/>
+        <circle cx="160" cy="180" r="15" fill="#f7f5ed" opacity="0.9"/>
+        <circle cx="145" cy="165" r="12" fill="#e8e4d3" opacity="0.9"/>
+        <circle cx="175" cy="165" r="10" fill="#f7f5ed" opacity="0.9"/>
+        <circle cx="100" cy="150" r="14" fill="#f7f5ed" opacity="0.9"/>
+        <circle cx="85" cy="135" r="10" fill="#e8e4d3" opacity="0.9"/>
+        <circle cx="60" cy="80" r="12" fill="#f7f5ed" opacity="0.9"/>
+        <circle cx="120" cy="90" r="16" fill="#f7f5ed" opacity="0.9"/>
+        <circle cx="135" cy="75" r="11" fill="#e8e4d3" opacity="0.9"/>
+    </svg>
+    <svg class="flower top-right" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path d="M-20 -20 Q100 50 160 180" stroke="#87995e" stroke-width="2" fill="none"/>
+        <path d="M20 10 Q120 40 100 150" stroke="#87995e" stroke-width="2" fill="none"/>
+        <circle cx="160" cy="180" r="15" fill="#f7f5ed" opacity="0.9"/>
+        <circle cx="145" cy="165" r="12" fill="#e8e4d3" opacity="0.9"/>
+        <circle cx="175" cy="165" r="10" fill="#f7f5ed" opacity="0.9"/>
+        <circle cx="100" cy="150" r="14" fill="#f7f5ed" opacity="0.9"/>
+        <circle cx="85" cy="135" r="10" fill="#e8e4d3" opacity="0.9"/>
+        <circle cx="60" cy="80" r="12" fill="#f7f5ed" opacity="0.9"/>
+        <circle cx="120" cy="90" r="16" fill="#f7f5ed" opacity="0.9"/>
+        <circle cx="135" cy="75" r="11" fill="#e8e4d3" opacity="0.9"/>
+    </svg>
+
+    <!-- Brilhos -->
+    <svg class="sparkle" style="top: 15%; left: 25%;" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 0 Q50 50 100 50 Q50 50 50 100 Q50 50 0 50 Q50 50 50 0 Z" fill="#fff"/></svg>
+    <svg class="sparkle" style="top: 25%; right: 20%; width: 20px;" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 0 Q50 50 100 50 Q50 50 50 100 Q50 50 0 50 Q50 50 50 0 Z" fill="#fff"/></svg>
+    <svg class="sparkle" style="top: 65%; left: 15%; width: 25px;" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 0 Q50 50 100 50 Q50 50 50 100 Q50 50 0 50 Q50 50 50 0 Z" fill="#fff"/></svg>
+
+    <div class="container">
+        <h1>CHÁ DE PANELA<br>ALINE</h1>
+        
+        <div class="graphic-area">
+            <svg class="house-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="62" y="10" width="12" height="30" fill="#f0ede1" rx="1"/>
+                <path d="M50 10 L10 45 L20 45 L20 85 L80 85 L80 45 L90 45 Z" fill="#f0ede1"/>
+                <path d="M50 75 C 35 60 40 45 50 52 C 60 45 65 60 50 75 Z" fill="#9cb071"/>
+            </svg>
+
+            <div class="button-group">
+                <a href="presenca.html" class="btn">Confirmar Presença</a>
+                <a href="presentes.html" class="btn">Lista de Presentes</a>
+            </div>
+        </div>
+
+        <div class="date-badge">10/10 ÀS 15H</div>
+        <div class="address">RUA ERLINDO JOSÉ DA SILVA, 82 - GUAÇU, SÃO ROQUE</div>
+    </div>
+</body>
+</html>

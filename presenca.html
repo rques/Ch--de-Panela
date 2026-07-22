@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Presença</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #9cb071;
+            --text-color: #ffffff;
+            --form-bg: #f0ede1;
+            --btn-color: #c48b5d;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+            font-family: 'Quicksand', sans-serif;
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .flower { position: absolute; width: 250px; opacity: 0.9; pointer-events: none; z-index: 0; }
+        .flower.top-left { top: -20px; left: -20px; transform: rotate(15deg); }
+        .flower.top-right { top: -20px; right: -20px; transform: scaleX(-1) rotate(15deg); }
+        .sparkle { position: absolute; width: 25px; animation: pulse 2s infinite alternate; pointer-events: none; }
+        @keyframes pulse { 0% { transform: scale(0.8); opacity: 0.5; } 100% { transform: scale(1.2); opacity: 1; } }
+
+        .container {
+            z-index: 1;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            margin-top: 40px;
+        }
+        h1 {
+            font-family: 'Amatic SC', cursive;
+            font-size: 4rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+        form {
+            background-color: var(--form-bg);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            color: #555;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            text-align: left;
+        }
+        label { font-weight: 700; font-size: 0.9rem; color: #7a8a58; margin-bottom: -10px; }
+        input, select {
+            width: 100%; padding: 12px; border: 1px solid #ccc;
+            border-radius: 8px; font-family: 'Quicksand', sans-serif; font-size: 1rem; box-sizing: border-box; background: #fff;
+        }
+        .btn-submit {
+            background-color: var(--btn-color); color: white; border: none; padding: 15px;
+            border-radius: 30px; font-size: 1.1rem; font-weight: 700; cursor: pointer; text-transform: uppercase; margin-top: 10px;
+        }
+        .btn-voltar { display: inline-block; margin-top: 20px; margin-bottom: 20px; color: white; text-decoration: none; font-weight: 700; border-bottom: 2px solid white; padding-bottom: 2px; text-transform: uppercase; }
+
+        /* --- RESPONSIVIDADE (CELULAR) --- */
+        @media (max-width: 600px) {
+            .flower { width: 150px; }
+            .container { margin-top: 80px; }
+            h1 { font-size: 3rem; }
+            form { padding: 20px; }
+            .btn-submit { font-size: 1rem; padding: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <svg class="flower top-left" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path d="M-20 -20 Q100 50 160 180" stroke="#87995e" stroke-width="2" fill="none"/>
+        <path d="M20 10 Q120 40 100 150" stroke="#87995e" stroke-width="2" fill="none"/>
+        <circle cx="160" cy="180" r="15" fill="#f7f5ed" opacity="0.9"/>
+        <circle cx="145" cy="165" r="12" fill="#e8e4d3" opacity="0.9"/>
+        <circle cx="175" cy="165" r="10" fill="#f7f5ed" opacity="0.9"/>
+        <circle cx="100" cy="150" r="14" fill="#f7f5ed" opacity="0.9"/>
+    </svg>
+    <svg class="flower top-right" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path d="M-20 -20 Q100 50 160 180" stroke="#87995e" stroke-width="2" fill="none"/>
+        <path d="M20 10 Q120 40 100 150" stroke="#87995e" stroke-width="2" fill="none"/>
+        <circle cx="160" cy="180" r="15" fill="#f7f5ed" opacity="0.9"/>
+        <circle cx="145" cy="165" r="12" fill="#e8e4d3" opacity="0.9"/>
+        <circle cx="175" cy="165" r="10" fill="#f7f5ed" opacity="0.9"/>
+        <circle cx="100" cy="150" r="14" fill="#f7f5ed" opacity="0.9"/>
+    </svg>
+
+    <svg class="sparkle" style="top: 25%; left: 10%;" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 0 Q50 50 100 50 Q50 50 50 100 Q50 50 0 50 Q50 50 50 0 Z" fill="#fff"/></svg>
+
+    <div class="container">
+        <h1>Confirme sua Presença</h1>
+        <form id="formPresenca">
+            <label for="nome">Nome Completo</label>
+            <input type="text" id="nome" placeholder="Digite seu nome" required>
+            
+            <label for="acompanhantes">Vai levar acompanhantes?</label>
+            <input type="number" id="acompanhantes" min="0" placeholder="Digite a quantidade" required>
+            
+            <label for="status">Você poderá ir?</label>
+            <select id="status" required>
+                <option value="sim">Sim, estarei lá!</option>
+                <option value="nao">Infelizmente não poderei ir</option>
+            </select>
+
+            <button type="submit" class="btn-submit">Enviar Confirmação</button>
+        </form>
+        <a href="index.html" class="btn-voltar">← Voltar para o Convite</a>
+    </div>
+
+    <script>
+        document.getElementById('formPresenca').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nome = document.getElementById('nome').value;
+            const acompanhantes = document.getElementById('acompanhantes').value;
+            const status = document.getElementById('status').value;
+            
+            const seuWhatsApp = "5511900000000"; // INSIRA SEU NÚMERO AQUI
+            
+            let mensagem = "";
+            if(status === 'sim') {
+                mensagem = `Olá! Quero confirmar minha presença no Chá de Panela! ✨\n\n*Nome:* ${nome}\n*Acompanhantes:* ${acompanhantes}`;
+            } else {
+                mensagem = `Olá. Infelizmente não poderei comparecer ao Chá de Panela. 😔\n\n*Nome:* ${nome}`;
+            }
+            window.open(`https://wa.me/${seuWhatsApp}?text=${encodeURIComponent(mensagem)}`, '_blank');
+        });
+    </script>
+</body>
+</html>
